@@ -3,6 +3,20 @@ const webcamElement = document.getElementById('webcam');
 
 let net;
 
+
+document.getElementById('webOn').addEventListener('click', async() =>{
+	await setupWebcam();
+  while (true) {
+    const result = await net.classify(webcamElement);
+
+    document.getElementById('console').innerText = `
+      prediction: ${result[0].className}\n
+      probability: ${result[0].probability}
+    `;
+
+    await tf.nextFrame();
+  }
+});
 async function app() {
   console.log('Loading mobilenet..');
 
@@ -10,6 +24,11 @@ async function app() {
   net = await mobilenet.load();
   console.log('Sucessfully loaded model');
 
+
+const imgLoad = document.getElementById('imageUpload');
+
+
+/*
   await setupWebcam();
 
   // Reads an image from the webcam and associates it with a specific class
@@ -43,7 +62,7 @@ async function app() {
     }
 
     await tf.nextFrame();
-  }
+  }*/
 }
 
 
