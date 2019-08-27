@@ -9,10 +9,10 @@
   <body>
 
   	<div>
-		<input type="file" name="file" id="imageUpload" accept=".png, .jpg, ,jpeg">
+		<input type="file" name="file" id="imageUpload" accept=".png, .jpg, ,jpeg"><!-- onchange="imgUploaded(event)">-->
 		<button  id="predictor" class="identify picture" >Predict!</button>
-		<div class="img-preview" id="imgPreview"></div>
-		<div class="result" id="displayResult"></div>
+		<img id="imgPreview" align="left" />
+		<div class="result" id="result"></div>
 	</div>
 
 

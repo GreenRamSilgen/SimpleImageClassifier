@@ -2,7 +2,7 @@ const classifier = knnClassifier.create();
 const webcamElement = document.getElementById('webcam');
 
 let net;
-
+let pred = false;
 
 document.getElementById('webOn').addEventListener('click', async() =>{
 	await setupWebcam();
@@ -17,6 +17,14 @@ document.getElementById('webOn').addEventListener('click', async() =>{
     await tf.nextFrame();
   }
 });
+
+/*PREDECIT BUTTON ACTIVE???
+document.getElementById('predictor').addEventListener('click', async() =>{
+	console.log('they predicted it');
+	pred = true;
+});
+*/
+
 async function app() {
   console.log('Loading mobilenet..');
 
@@ -25,7 +33,47 @@ async function app() {
   console.log('Sucessfully loaded model');
 
 
-const imgLoad = document.getElementById('imageUpload');
+/*
+var imgUploaded = function(event){
+	var imgPrev = document.getElementById('imgPreview');
+	imgPreview.src = URL.createObjectURL(event.target.files[0]);
+};
+*/
+
+const imageUpload = document.getElementById('imageUpload');
+imageUpload.addEventListener('change', (event) => {
+	console.log('Uploaded and stuff');
+	var imgPrev = document.getElementById('imgPreview');
+	imgPreview.src = URL.createObjectURL(event.target.files[0]);
+	
+	imgPreview.onload = async() =>{
+		document.getElementById('predictor').addEventListener('click', async() =>{
+	console.log('they predicted it');
+	
+		const result = await net.classify(imgPreview);
+		document.getElementById('result').innerHTML = '<p>' + 
+          JSON.stringify(result.reduce((prev, current) => {
+            return (prev.probability > current.probability) ? prev : current;
+          })) + '</p>'
+      });
+
+      };
+
+/*
+	const file = event.target.files[0];
+	const fileType = file['type'];
+	if(fileType.search('image') >= 0)
+	{
+		const imageReader = new FileReader();
+	}
+	document.getElementById('displayResult').innerText = `
+      prediction: ${result[0].className}\n
+      probability: ${result[0].probability}
+    `;
+    */
+	//var imgPreview = document.getElementById('imgPreview');
+	//imgPreview.load(imageUpload);
+});
 
 
 /*
@@ -62,9 +110,10 @@ const imgLoad = document.getElementById('imageUpload');
     }
 
     await tf.nextFrame();
-  }*/
-}
+  }
 
+*/
+}
 
 async function setupWebcam() {
   return new Promise((resolve, reject) => {
