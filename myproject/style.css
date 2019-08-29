@@ -1,0 +1,56 @@
+* {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        vertical-align: baseline;
+        font-family:Garamond, Georgia, serif;
+        color:white;
+        z-index: -1;
+    }
+
+h1, h2, h3, h4{
+  text-align: center;
+}
+
+
+div.intro{
+	z-index: 1;
+	background-color: #1e1f26 !important;
+	height: auto;
+	width: 100%;
+	color: black;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+	text-decoration-color: white;
+}
+
+div.picPick{
+	text-align: center;
+	height: 400px;
+	border: 20px;
+	overflow: auto;
+	margin: 30px 0 30px 0;
+}
+
+body{
+	height: auto;
+	width: auto;
+	background-color: #1d1e22;
+}
+
+.button{
+	background: grey;
+    width: 100px;
+    margin: 20px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.button:hover {
+	background: white;
+	color: black;
+}
+
+#imgPreview{
+	margin:20px;
+}

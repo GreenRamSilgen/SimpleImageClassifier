@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- Load the latest version of TensorFlow.js -->
+    <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+    <script src="https://unpkg.com/@tensorflow-models/mobilenet@2.0.2"></script>
+    <script src="https://unpkg.com/@tensorflow-models/knn-classifier"></script>
+  </head>
+  <body>
+    <div class="intro">
+      <h1 style="padding: 20px 20px 0px 20px;">Image Classifier</h1>
+      <h3 style="padding: 0 0 20px 0;">By: Kiran Shrestha </h3>
+    </div>
+
+
+  	<div class="picPick">
+		<img id="imgPreview"  />
+    <br>
+		<input type="file" name="file" id="imageUpload" accept=".png, .jpg, ,jpeg" hidden><!-- onchange="imgUploaded(event)">-->
+		<div class="result" id="result"></div>
+    <label for="imageUpload" class="button">Upload</label>
+    
+		<button  id="predictor" class="button" style="width:100px">Predict!</button>
+	</div>
+
+
+
+<div class="picPick">
+    <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
+    <div id="console"></div>
+	<button class="button" id="webOn">Activate Webcam!</button>
+    <!-- Add an image that we will use to test -->
+    <!--
+    <button id="class-a">Add A</button>
+	<button id="class-b">Add B</button>
+	<button id="class-c">Add C</button>
+	-->
+</div>
+    <!-- Load index.js after the content of the page -->
+    <script src="index.js"></script>
+  </body>
+</html>
